@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./static/favicon.ico" type="image/x-icon">
+    <title>博兹雅48零式模拟器</title>
+    <script type="text/javascript" src="https://5022.me/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./static/rem.js"></script>
+    <link rel="stylesheet" href="./static/style.css">
+    <style>
+        .main{
+            padding-top: 40px;
+            min-height: 100vh;
+        }
+        .main>.title{
+            color: #ffffff;
+            height: 120px;
+            line-height: 120px;
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 50px;
+        }
+        .menu{
+            display: block;
+            width: 500px;
+            margin: 0 auto;
+            min-height: calc(100vh - 300px);
+        }
+        .menu li{margin-top: 20px;}
+        .menu li:first-child{margin-top: 0;}
+        .menu li>a{
+            display: block;
+            margin: 0 auto;
+            width: 300px;
+            height: 80px;
+            color: #c1cbd3;
+            text-align: center;
+            line-height: 80px;
+            font-size: 28px;
+            border: 2px solid #c1cbd3;
+            transition: all .2s ease;
+            border-radius: 4px;
+        }
+        .menu li>a:hover{
+            background: #c1cbd3;
+            color: #4c5c68;
+        }
+        .github{
+            text-align: center;
+            padding: 20px 0;
+            height: 60px;
+        }
+        .github a{color:#86929b;}
+        @media screen and (max-width: 600px){
+            .main{padding-top: .4rem;}
+            .main>.title{
+                font-size: .64rem;
+                height: 2rem;
+                line-height: 2rem;
+                margin-bottom: 1rem;
+            }
+            .menu{width: 100%;min-height: calc(100vh - 6rem);}
+            .menu li{margin-top: .5rem;}
+            .menu li>a{
+                width: 4rem;
+                height: 1.4rem;
+                color: #c1cbd3;
+                text-align: center;
+                line-height: 1.4rem;
+                font-size: .48rem;
+                border: .04rem solid #c1cbd3;
+                transition: all .2s ease;
+                border-radius: .08rem;
+            }
+            .github{padding: .4rem 0;height: 1.2rem;}
+        }
+    </style>
+</head>
+<body>
+ <div class="main">
+     <div class="title">
+         博兹雅48零式模拟器
+     </div>
+     <ul class="menu">
+         <li>
+             <a href="./chess/chess.html">女王下棋 v1.0</a>
+         </li>
+         <li>
+             <a href="#">待续</a>
+         </li>
+     </ul>
+     <p class="github"><a href="https://github.com/Mah5022/ff14_bzy">github/ff14_bzy</a></p>
+ </div>
+</body>
+</html>

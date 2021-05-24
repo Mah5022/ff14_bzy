@@ -10,6 +10,7 @@ body {
     font-family: "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Monaco, monospace, Tahoma, STXihei, 华文细黑, STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, 宋体, Heiti, 黑体, sans-serif;
     font-size: 14px;
     -webkit-tap-highlight-color: transparent;
+    background: #4c5c68;
 }
 aside, footer, header, section {display: block;}
 a {text-decoration: none;outline: none;}
@@ -19,4 +20,9 @@ blockquote, body, button, caption,  div,  fieldset, figure, form, h1, h2, h3, h4
     margin: 0;padding: 0;
     box-sizing: border-box;
     font-weight: normal;
+}
+.main{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
