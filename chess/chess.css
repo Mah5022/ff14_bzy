@@ -1,0 +1,110 @@
+.main>.title{
+    color: #ffffff;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 40px;
+}
+.buff{
+    width: 70px;
+    height: 80px;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+.buff>i{
+    display: block;
+    width: 30px;
+    height: 41px;
+    background: url("../static/icon.png") no-repeat;
+    background-size: 150px 100px;
+}
+.buff>i:first-child{float: left;}
+.buff>i:last-child{float: right;}
+.buff>i.num2{background-position: 0 0;}
+.buff>i.num3{background-position: -30px 0;}
+.buff>i.num4{background-position: -60px 0;}
+.chessboard{
+    border-radius: 10px;
+    width: 400px;
+    height: 480px;
+    background: #3f484e;
+    margin: 0 auto;
+}
+.middle{
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+}
+.center{
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 300px;
+    float: left;
+    background: #ffffff;
+}
+.center>li{
+    display: block;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 60px;
+    height: 60px;
+    background: #fff no-repeat center center;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+.center>li:nth-child(even){background: #000;}
+.center>li.start{background: aqua;cursor: default;}
+.center>li:not(.start):hover{transform: scale(1.1);}
+.center>li.die::after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: url("../static/die.png") no-repeat center center;
+    background-size: 40px 40px;
+}
+.soldier1{
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.soldier2{
+    width: 50px;
+    height: 300px;
+    float: left;
+    box-sizing: border-box;
+}
+.soldier1.soldier-left{padding-left: 65px;}
+.soldier1.soldier-right{padding-left: 185px;}
+.soldier2.soldier-top{padding-top: 65px;}
+.soldier2.soldier-bottom{padding-top: 185px;}
+.soldier>p{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: url("../static/icon.png") no-repeat -100px 0;
+    background-size: 150px 100px;
+}
+.soldier>p::after{
+    content: "";
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: url("../static/icon.png") no-repeat;
+    background-size: 150px 100px;
+}
+.soldier.num1>p::after{background-position: 0 -50px;}
+.soldier.num2>p::after{background-position: -50px -50px;}
+.soldier.num3>p::after{background-position: -100px -50px;}
+.github{
+    text-align: center;
+    padding: 20px 0;
+    height: 60px;
+}
+.github a{color:#86929b;}
+@media screen and (max-width: 600px){}

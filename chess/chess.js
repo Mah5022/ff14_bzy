@@ -15,8 +15,8 @@ $(function () {
         //生成buff
         [buff_1,buff_2] = random_pool[Math.floor(Math.random()*random_pool.length)];
         [buff_1,buff_2] = [buff_1+1,buff_2+1];
-        console.log("buff1:"+buff_1);
-        console.log("buff2:"+buff_2);
+        $(".buff>i").eq(0).addClass("num"+buff_1);
+        $(".buff>i").eq(1).addClass("num"+buff_2);
 
         start_spot = Math.floor(Math.random()*2);
         $(".center>li[class='3-"+(start_spot?'5':'1')+"']").addClass('start');
@@ -25,12 +25,12 @@ $(function () {
         [soldier_left,soldier_right] = random_pool[Math.floor(Math.random()*random_pool.length)];
 
         soldier1_start = Math.floor(Math.random()*2);
-        $(".top").removeClass("type1 type2").addClass('soldier-'+(soldier1_start?'right':'left')).html("<p>"+soldier_top+"</p>");
-        $(".bottom").removeClass("type1 type2").addClass('soldier-'+(soldier1_start?'left':'right')).html("<p>"+soldier_bottom+"</p>");
+        $(".top").addClass('soldier-'+(soldier1_start?'right':'left')+' num'+soldier_top);
+        $(".bottom").addClass('soldier-'+(soldier1_start?'left':'right')+' num'+soldier_bottom);
 
         soldier2_start = Math.floor(Math.random()*2);
-        $(".left").removeClass("type1 type2").addClass('soldier-'+(soldier2_start?'top':'bottom')).html("<p>"+soldier_left+"</p>");
-        $(".right").removeClass("type1 type2").addClass('soldier-'+(soldier2_start?'bottom':'top')).html("<p>"+soldier_right+"</p>");
+        $(".left").addClass('soldier-'+(soldier2_start?'top':'bottom')+' num'+soldier_left);
+        $(".right").addClass('soldier-'+(soldier2_start?'bottom':'top')+' num'+soldier_right);
 
         init_state = 1;
     }
@@ -40,8 +40,8 @@ $(function () {
         init_state = 0;
 
         $("ul.center>li").removeClass("start");
-        $(".soldier1").html("");
-        $(".soldier2").html("");
+        $(".buff>i").attr("class","");
+        $(".soldier").removeClass("soldier-top soldier-bottom num1 num2 num3");
 
         chess_start();
     }
@@ -61,12 +61,12 @@ $(function () {
 
         //东西侧小怪判定
         if(die_row.indexOf(spot_y)>=0){
-            console.log("YOU DIE");
+            //死了
+            $("li[class='"+spot_x+"-"+spot_y+"']").addClass("die");
             return false;
         }
 
-        console.log("点击:["+spot_x+","+spot_y+"]");
-        console.log("第一轮移动:");
+        // console.log("点击:["+spot_x+","+spot_y+"]");
         for(let move_x=-buff_1;move_x<=buff_1;move_x++){
             //第一次计步后x坐标
             let first_x = spot_x+move_x;
@@ -92,7 +92,8 @@ $(function () {
             }
         }
 
-        console.log("YOU DIE");
+        //死了
+        $("li[class='"+spot_x+"-"+spot_y+"']").addClass("die");
         return false;
     }
 
