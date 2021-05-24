@@ -1,0 +1,22 @@
+@charset "UTF-8";
+html {
+    line-height: 1.5;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Heiti SC","Microsoft Yahei","WenQuanYi Micro Hei",sans-serif;
+    font-family: "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Monaco, monospace, Tahoma, STXihei, 华文细黑, STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-size: 14px;
+    -webkit-tap-highlight-color: transparent;
+}
+aside, footer, header, section {display: block;}
+a {text-decoration: none;outline: none;}
+img {width: 100%;border-style: none;}
+ul,li,dl,dt,ol,dd{list-style: none;margin: 0;padding: 0;}
+blockquote, body, button, caption,  div,  fieldset, figure, form, h1, h2, h3, h4, h5, h6, hr, html, li, menu, p, pre, table, td, textarea, th{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
