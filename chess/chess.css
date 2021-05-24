@@ -6,36 +6,131 @@
     font-size: 42px;
     margin-bottom: 40px;
 }
-.buff{
-    width: 70px;
-    height: 80px;
-    padding: 20px 0;
-    margin: 0 auto;
-}
-.buff>i{
-    display: block;
-    width: 30px;
-    height: 41px;
-    background: url("../static/icon.png") no-repeat;
-    background-size: 150px 100px;
-}
-.buff>i:first-child{float: left;}
-.buff>i:last-child{float: right;}
-.buff>i.num2{background-position: 0 0;}
-.buff>i.num3{background-position: -30px 0;}
-.buff>i.num4{background-position: -60px 0;}
+
 .chessboard{
     border-radius: 10px;
     width: 400px;
     height: 480px;
     background: #3f484e;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 }
+.chessboard>.popup{
+    width: 100%;
+    height: 100%;
+    background: #3f484e;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+}
+.chessboard>.popup>.start{
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    padding-top: 160px;
+    display: none;
+}
+.chessboard>.popup>.text{
+    width: 100%;
+    height: calc(100% - 120px);
+    display: none;
+}
+.chessboard>.popup>.help{
+    padding: 50px 30px 0;
+    font-size: 20px;
+    text-align: left;
+    line-height: 30px;
+}
+.chessboard>.popup>.die,.chessboard>.popup>.success{
+    font-size: 36px;
+    padding-top: 100px;
+}
+.chessboard>.popup>.close{
+    display: block;
+    width: 120px;
+    height: 50px;
+    margin: 0 auto;
+    background: #dadfe2;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #3f484e;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.chessboard>.popup>.close:hover{background: #fff;}
+
+.top-status{
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+}
+
+.buff{
+    width: 140px;
+    height: 80px;
+    padding: 20px 0;
+    float:left;
+}
+.buff>.countdown{
+    width: 25px;
+    height: 41px;
+    text-align: center;
+    line-height: 41px;
+    color: #ffffff;
+    float: left;
+    font-size: 20px;
+}
+.buff>i{
+    display: block;
+    width: 30px;
+    height: 41px;
+    background: url("../static/icon.png") no-repeat -150px 0;
+    background-size: 150px 100px;
+    margin-left: 10px;
+    float:left;
+}
+.buff>i:nth-child(3){margin-right: 10px;}
+.buff>i.num2{background-position: 0 0;}
+.buff>i.num3{background-position: -30px 0;}
+.buff>i.num4{background-position: -60px 0;}
+
+.btn{
+    width: 210px;
+    height: 80px;
+    float: right;
+    padding: 15px 0;
+}
+.btn>a{
+    display: block;
+    width: 100px;
+    height: 50px;
+    background: #dadfe2;
+    border-radius: 8px;
+    float: right;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #3f484e;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.btn>a:hover{background: #ffffff;}
+.btn>a:first-child{margin-left: 10px;}
+
 .middle{
     overflow: hidden;
     width: 100%;
     height: 300px;
 }
+
 .center{
     display: block;
     margin: 0;
@@ -67,17 +162,18 @@
     background: url("../static/die.png") no-repeat center center;
     background-size: 40px 40px;
 }
+.center>li.success{background: #00a700;}
+
+.soldier{opacity: 0;}
 .soldier1{
     width: 300px;
     height: 50px;
     margin: 0 auto;
-    box-sizing: border-box;
 }
 .soldier2{
     width: 50px;
     height: 300px;
     float: left;
-    box-sizing: border-box;
 }
 .soldier1.soldier-left{padding-left: 65px;}
 .soldier1.soldier-right{padding-left: 185px;}
@@ -95,16 +191,93 @@
     display: block;
     width: 50px;
     height: 50px;
-    background: url("../static/icon.png") no-repeat;
+    background: url("../static/icon.png") no-repeat  -150px -50px;;
     background-size: 150px 100px;
 }
+.soldier.num1,.soldier.num2,.soldier.num3{opacity: 1;}
 .soldier.num1>p::after{background-position: 0 -50px;}
 .soldier.num2>p::after{background-position: -50px -50px;}
 .soldier.num3>p::after{background-position: -100px -50px;}
+
 .github{
     text-align: center;
     padding: 20px 0;
     height: 60px;
 }
 .github a{color:#86929b;}
-@media screen and (max-width: 600px){}
+@media screen and (max-width: 600px){
+    .main>.title{
+        font-size: .64rem;
+        height: 1.4rem;
+        line-height: 1.4rem;
+        margin-bottom: .8rem;
+    }
+
+    .chessboard{border-radius: .1rem;width: 7rem;height: 8.8rem;}
+    .chessboard>.popup>.start{font-size: .8rem;padding-top: 3rem;}
+    .chessboard>.popup>.text{height: calc(100% - 2.2rem);}
+    .chessboard>.popup>.help{
+        padding: 1rem .5rem 0;
+        font-size: .34rem;
+        line-height: .5rem;
+    }
+    .chessboard>.popup>.die,.chessboard>.popup>.success{
+        font-size: .7rem;
+        padding-top: 2rem;
+    }
+    .chessboard>.popup>.close{
+        width: 2.8rem;
+        height: 1rem;
+        border-radius: .14rem;
+        line-height: 1rem;
+        font-size: .4rem;
+    }
+
+    .top-status{height: 1.4rem;padding: 0 .4rem;}
+
+    .buff{width: 2.6rem;height: 1.4rem;padding: .28rem 0;}
+    .buff>.countdown{width: .48rem;height: .8rem;line-height: .8rem;font-size: .34rem;}
+    .buff>i{
+        display: block;
+        width: .6rem;
+        height: .82rem;
+        background-position: -3rem 0;
+        background-size: 3rem 2rem;
+        margin-left: .1rem;
+    }
+    .buff>i:nth-child(3){margin-right: .1rem;}
+    .buff>i.num3{background-position: -.6rem 0;}
+    .buff>i.num4{background-position: -1.2rem 0;}
+
+    .btn{width: 3.4rem;height: 1.4rem;padding: .25rem 0;}
+    .btn>a{
+        width: 1.6rem;
+        height: .9rem;
+        border-radius: .16rem;
+        line-height: .9rem;
+        font-size: .36rem;
+    }
+    .btn>a:hover{background: #ffffff;}
+    .btn>a:first-child{margin-left: 10px;}
+
+    .middle{height: 5rem;}
+
+    .center{width: 5rem;height: 5rem;}
+    .center>li{width: 1rem;height: 1rem;}
+    .center>li:not(.start):hover{transform: none;}
+    .center>li.die::after{width: 1rem;height: 1rem;background-size: .8rem .8rem;}
+
+    .soldier1{width: 5rem;height: 1rem;}
+    .soldier2{width: 1rem;height: 5rem;}
+    .soldier1.soldier-left{padding-left: 1rem;}
+    .soldier1.soldier-right{padding-left: 3rem;}
+    .soldier2.soldier-top{padding-top: 1rem;}
+    .soldier2.soldier-bottom{padding-top: 3rem;}
+    .soldier>p{width: 1rem;height: 1rem;background-position: -2rem 0;background-size: 3rem 2rem;}
+    .soldier>p::after{width: 1rem;height: 1rem;background-position: -3rem -1rem;background-size: 3rem 2rem;}
+    .soldier.num1>p::after{background-position: 0 -1rem;}
+    .soldier.num2>p::after{background-position: -1rem -1rem;}
+    .soldier.num3>p::after{background-position: -2rem -1rem;}
+
+    .github{padding: .4rem 0;height: 1.2rem;}
+}
