@@ -123,7 +123,7 @@
     transition: background-color .2s ease;
 }
 .btn>a:hover{background: #ffffff;}
-.btn>a:first-child{margin-left: 10px;}
+.btn>a.help{float: left;}
 
 .middle{
     overflow: hidden;
@@ -257,8 +257,6 @@
         line-height: .9rem;
         font-size: .36rem;
     }
-    .btn>a:hover{background: #ffffff;}
-    .btn>a:first-child{margin-left: 10px;}
 
     .middle{height: 5rem;}
 
