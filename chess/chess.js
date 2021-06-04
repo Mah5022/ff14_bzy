@@ -37,7 +37,7 @@ $(function () {
         },1000);
         setTimeout(function () {
             $(".popup").hide().children(".start").hide();
-            console.log(timer);
+            // console.log(timer);
         },1000);
     }
 
