@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+    <title>女王下棋测试v2</title>
+    <script type="text/javascript" src="https://5022.me/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/rem.js"></script>
+    <script type="text/javascript" src="./chess.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="./chess.css">
+</head>
+<body>
+<div class="main">
+    <div class="title">女王下棋模拟器v2</div>
+    <div class="chessboard">
+        <div class="top-status">
+            <div class="buff">
+                <div class="countdown countdown1"></div>
+                <i class=""></i>
+                <i class=""></i>
+                <div class="countdown countdown2"></div>
+            </div>
+            <div class="btn">
+                <a class="help" href="#">帮 助</a>
+                <a class="start" href="#">开 始</a>
+            </div>
+        </div>
+        <div class="soldier soldier1 top"><p></p></div>
+        <div class="middle">
+            <div class="soldier soldier2 left"><p></p></div>
+            <ul class="center">
+                <!--第五行-->
+                <li class="1-5" data-x="1" data-y="5"></li>
+                <li class="2-5" data-x="2" data-y="5"></li>
+                <li class="3-5" data-x="3" data-y="5"></li>
+                <li class="4-5" data-x="4" data-y="5"></li>
+                <li class="5-5" data-x="5" data-y="5"></li>
+                <!--第四行-->
+                <li class="1-4" data-x="1" data-y="4"></li>
+                <li class="2-4" data-x="2" data-y="4"></li>
+                <li class="3-4" data-x="3" data-y="4"></li>
+                <li class="4-4" data-x="4" data-y="4"></li>
+                <li class="5-4" data-x="5" data-y="4"></li>
+                <!--第三行-->
+                <li class="1-3" data-x="1" data-y="3"></li>
+                <li class="2-3" data-x="2" data-y="3"></li>
+                <li class="3-3" data-x="3" data-y="3"></li>
+                <li class="4-3" data-x="4" data-y="3"></li>
+                <li class="5-3" data-x="5" data-y="3"></li>
+                <!--第二行-->
+                <li class="1-2" data-x="1" data-y="2"></li>
+                <li class="2-2" data-x="2" data-y="2"></li>
+                <li class="3-2" data-x="3" data-y="2"></li>
+                <li class="4-2" data-x="4" data-y="2"></li>
+                <li class="5-2" data-x="5" data-y="2"></li>
+                <!--第一行-->
+                <li class="1-1" data-x="1" data-y="1"></li>
+                <li class="2-1" data-x="2" data-y="1"></li>
+                <li class="3-1" data-x="3" data-y="1"></li>
+                <li class="4-1" data-x="4" data-y="1"></li>
+                <li class="5-1" data-x="5" data-y="1"></li>
+            </ul>
+            <div class="animation"></div>
+            <div class="soldier soldier2 right"><p></p></div>
+        </div>
+        <div class="soldier soldier1 bottom"><p></p></div>
+        <div class="popup">
+            <div class="start">准 备</div>
+            <div class="text help">
+                1.蓝色为最后安全点，随机南北，请按照棋盘情况<b>直接点击起点</b>；<br/><br/>
+                2.仅判断起点(点击位置)能否正确处理机制，正解和路线不唯一，怎么走自己琢磨；<br/><br/>
+                3.棋盘如何处理请去看攻略，不提供教学，仅供自我检测；
+            </div>
+            <div class="text die">有稿子<br/>我不说是谁</div>
+            <div class="text success">不愧是你</div>
+            <a href="#" class="close">确 定</a>
+        </div>
+    </div>
+    <p class="github"><a href="https://github.com/Mah5022/ff14_bzy">Github</a></p>
+</div>
+</body>
+</html>
