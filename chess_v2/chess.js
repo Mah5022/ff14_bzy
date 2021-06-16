@@ -62,7 +62,7 @@ $(function () {
             //确定起始位置
             init_state = 0;
             first_spot = [spot_x,spot_y];
-            $("li[class='"+spot_x+"-"+spot_y+"']").addClass("first").text("1");
+            $("li[class*='"+spot_x+"-"+spot_y+"']").addClass("first");
             chess_check_1();
             return false;
         }
@@ -70,7 +70,7 @@ $(function () {
             //第一次移动(第二轮起始点)
             init_state = 0;
             second_spot = [spot_x,spot_y];
-            $("li[class='"+spot_x+"-"+spot_y+"']").addClass("second").text("2");
+            $("li[class*='"+spot_x+"-"+spot_y+"']").addClass("second");
             chess_check_2();
             return false;
         }
@@ -88,6 +88,7 @@ $(function () {
         run_animation(1,function () {
             if(danger_row_1==first_spot[1]||danger_row_2==first_spot[1]){
                 //死了
+                $("li[class*='"+first_spot[0]+"-"+first_spot[1]+"']").removeClass("first").addClass("die");
                 $(".popup").show().children(".die").show();
             }else{
                 init_state = 2;
@@ -102,17 +103,21 @@ $(function () {
         //点距离
         let distance = Math.abs(first_spot[0]-second_spot[0])+Math.abs(first_spot[1]-second_spot[1]);
 
-        run_animation(2,function () {
-            if(danger_col_1==second_spot[0]||danger_col_2==second_spot[0]){
-                //死了
-                $(".popup").show().children(".die").show();
-            }else if(distance!=buff_1){
-                //死了
-                $(".popup").show().children(".die").show();
-            }else{
-                init_state = 3;
-            }
-        })
+        if(distance!=buff_1){
+            //死了
+            $("li[class*='"+second_spot[0]+"-"+second_spot[1]+"']").removeClass("second").addClass("die");
+            $(".popup").show().children(".die").show();
+        }else{
+            run_animation(2,function () {
+                if(danger_col_1==second_spot[0]||danger_col_2==second_spot[0]){
+                    //死了
+                    $("li[class*='"+second_spot[0]+"-"+second_spot[1]+"']").removeClass("second").addClass("die");
+                    $(".popup").show().children(".die").show();
+                }else{
+                    init_state = 3;
+                }
+            })
+        }
     }
 
     function chess_check_3() {
@@ -122,31 +127,33 @@ $(function () {
             $(".popup").show().children(".die").show();
         }else{
             //活了
+            $("li[class*='3-"+(start_spot?5:1)+"']").removeClass("first").addClass("success");
             $(".popup").show().children(".success").show();
         }
     }
 
     function run_animation(type,fn=function () {}){
+        let run_time = 600;
         let cell_length =  $("ul.center").width()/5;
         if(type==1){
             let left_pos = $(".soldier.left>p").position().top,
                 right_pos = $(".soldier.right>p").position().top;
             $(".soldier.left>p").animate({
                 top:soldier_left[0]=='top'?(left_pos+cell_length*soldier_left[1]):(left_pos-cell_length*soldier_left[1])
-            },1000,"linear");
+            },run_time+100,"linear");
             $(".soldier.right>p").animate({
                 top:soldier_right[0]=='top'?(right_pos+cell_length*soldier_right[1]):(right_pos-cell_length*soldier_right[1])
-            },1000,"linear",function () {fn();});
+            },run_time+100,"linear",function () {fn();});
             let left_timer = setInterval(function () {
                 $(".soldier.left").removeClass("num"+soldier_left[1]).addClass("num"+(soldier_left[1]-1));
                 soldier_left[1]--;
                 if(soldier_left[1]==0)clearInterval(left_timer);
-            },900/soldier_left[1]);
+            },run_time/soldier_left[1]);
             let right_timer = setInterval(function () {
                 $(".soldier.right").removeClass("num"+soldier_right[1]).addClass("num"+(soldier_right[1]-1));
                 soldier_right[1]--;
                 if(soldier_right[1]==0)clearInterval(right_timer);
-            },900/soldier_right[1]);
+            },run_time/soldier_right[1]);
 
             return false;
         }
@@ -155,20 +162,20 @@ $(function () {
                 bottom_pos = $(".soldier.bottom>p").position().left;
             $(".soldier.top>p").animate({
                 left:soldier_top[0]=='left'?(top_pos+cell_length*soldier_top[1]):(top_pos-cell_length*soldier_top[1])
-            },1000,"linear");
+            },run_time+100,"linear");
             $(".soldier.bottom>p").animate({
                 left:soldier_bottom[0]=='left'?(bottom_pos+cell_length*soldier_bottom[1]):(bottom_pos-cell_length*soldier_bottom[1])
-            },1000,"linear",function () {fn();});
+            },run_time+100,"linear",function () {fn();});
             let top_timer = setInterval(function () {
                 $(".soldier.top").removeClass("num"+soldier_top[1]).addClass("num"+(soldier_top[1]-1));
                 soldier_top[1]--;
                 if(soldier_top[1]==0)clearInterval(top_timer);
-            },900/soldier_top[1]);
+            },run_time/soldier_top[1]);
             let bottom_timer = setInterval(function () {
                 $(".soldier.bottom").removeClass("num"+soldier_bottom[1]).addClass("num"+(soldier_bottom[1]-1));
                 soldier_bottom[1]--;
                 if(soldier_bottom[1]==0)clearInterval(bottom_timer);
-            },900/soldier_bottom[1]);
+            },run_time/soldier_bottom[1]);
 
             return false;
         }

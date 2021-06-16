@@ -25,7 +25,7 @@
     top: 0;
     overflow: hidden;
     text-align: center;
-    color: #fff;
+    color: rgba(255,255,255,0.8);
 }
 .chessboard>.popup>.start{
     width: 100%;
@@ -45,6 +45,7 @@
     text-align: left;
     line-height: 30px;
 }
+.chessboard>.popup>.help b{color:#ffffff;}
 .chessboard>.popup>.die,.chessboard>.popup>.success{
     font-size: 36px;
     padding-top: 100px;
@@ -69,46 +70,54 @@
 .top-status{
     width: 100%;
     height: 80px;
-    padding: 0 20px;
+    padding: 15px 50px 0;
 }
 
 .buff{
-    width: 140px;
-    height: 80px;
-    padding: 20px 0;
+    width: 150px;
+    height: 50px;
     float:left;
+    background: #dadfe2;
+    border-radius: 8px;
+    padding-left: 6px;
 }
 .buff>.countdown{
     width: 25px;
-    height: 41px;
+    height: 50px;
     text-align: center;
-    line-height: 41px;
-    color: #ffffff;
+    line-height: 50px;
     float: left;
     font-size: 20px;
+    font-weight: 800;
+    color: #3f484e;
+    box-sizing: content-box;
+}
+.buff>.countdown.countdown2{
+    border-left: 2px solid #3f484e;
+    padding-left: 6px;
 }
 .buff>i{
     display: block;
     width: 30px;
-    height: 41px;
+    height: 50px;
     background: url("../static/icon.png") no-repeat -150px 0;
     background-size: 150px 100px;
     float:left;
 }
-.buff>i:nth-child(2){margin-right: 16px;}
-.buff>i.num2{background-position: 0 0;}
-.buff>i.num3{background-position: -30px 0;}
-.buff>i.num4{background-position: -60px 0;}
+.buff>i:nth-child(2){margin-right: 14px;}
+.buff>i.num2{background-position: 0 5px;}
+.buff>i.num3{background-position: -30px 5px;}
+.buff>i.num4{background-position: -60px 5px;}
 
 .btn{
-    width: 210px;
-    height: 80px;
+    width: 140px;
+    height: 65px;
     float: right;
-    padding: 15px 0;
+    padding-bottom: 15px;
 }
 .btn>a{
     display: block;
-    width: 100px;
+    width: 80px;
     height: 50px;
     background: #dadfe2;
     border-radius: 8px;
@@ -122,7 +131,10 @@
     transition: background-color .2s ease;
 }
 .btn>a:hover{background: #ffffff;}
-.btn>a.help{float: left;}
+.btn>a.help{
+    width: 50px;
+    float: left;
+}
 
 .middle{
     overflow: hidden;
@@ -159,7 +171,7 @@
 .center>li:nth-child(even){background: #000;}
 .center>li.start{background: aqua;}
 .center>li:not(.start):hover{transform: scale(1.1);}
-.center>li.die::after{
+.center>li.die::after,.center>li.first::after,.center>li.second::after,.center>li.success::after{
     content: "";
     display: block;
     width: 60px;
@@ -167,7 +179,15 @@
     background: url("../static/die.png") no-repeat center center;
     background-size: 40px 40px;
 }
-.center>li.success{background: #00a700;}
+.center>li.first::after{
+    background-image: url("../static/first_spot.png");
+}
+.center>li.second::after{
+    background-image: url("../static/second_spot.png");
+}
+.center>li.success::after {
+    background-image: url("../static/success.png");
+}
 
 .animation{
     display: none;
@@ -288,7 +308,11 @@
         line-height: 1rem;
     }
     .center>li:not(.start):hover{transform: none;}
-    .center>li.die::after{width: 1rem;height: 1rem;background-size: .8rem .8rem;}
+    .center>li.die::after,.center>li.first::after,.center>li.second::after,.center>li.success::after{
+        width: 1rem;
+        height: 1rem;
+        background-size: .8rem .8rem;
+    }
 
     .soldier1{width: 5rem;height: 1rem;}
     .soldier2{width: 1rem;height: 5rem;}
