@@ -199,6 +199,34 @@
     right: 0;
     margin: 0 auto;
 }
+.animation>.sword-qi{
+    position: absolute;
+    background: rgba(235,102,24,0.9);
+}
+.animation>.sword-qi.sq1{
+    width: 0;
+    height: 60px;
+    top: 0;
+    left: 0;
+}
+.animation>.sword-qi.sq2{
+    width: 0;
+    height: 60px;
+    top: 0;
+    right: 0;
+}
+.animation>.sword-qi.sq3{
+    width: 60px;
+    height: 0;
+    top: 0;
+    left: 0;
+}
+.animation>.sword-qi.sq4{
+    width: 60px;
+    height: 0;
+    bottom: 0;
+    left: 0;
+}
 
 .soldier{opacity: 0;}
 .soldier1{

@@ -74,7 +74,7 @@ $(function () {
             chess_check_2();
             return false;
         }
-        if(init_state == 3){
+        if(init_state == 3 && $("li[class*='"+spot_x+"-"+spot_y+"']").hasClass("start")){
             init_state = 0;
             chess_check_3();
         }
@@ -89,7 +89,7 @@ $(function () {
             if(danger_row_1==first_spot[1]||danger_row_2==first_spot[1]){
                 //死了
                 $("li[class*='"+first_spot[0]+"-"+first_spot[1]+"']").removeClass("first").addClass("die");
-                $(".popup").show().children(".die").show();
+                $(".popup").show().children(".die2").show();
             }else{
                 init_state = 2;
             }
@@ -106,13 +106,13 @@ $(function () {
         if(distance!=buff_1){
             //死了
             $("li[class*='"+second_spot[0]+"-"+second_spot[1]+"']").removeClass("second").addClass("die");
-            $(".popup").show().children(".die").show();
+            $(".popup").show().children(".die1").show();
         }else{
             run_animation(2,function () {
                 if(danger_col_1==second_spot[0]||danger_col_2==second_spot[0]){
                     //死了
                     $("li[class*='"+second_spot[0]+"-"+second_spot[1]+"']").removeClass("second").addClass("die");
-                    $(".popup").show().children(".die").show();
+                    $(".popup").show().children(".die2").show();
                 }else{
                     init_state = 3;
                 }
@@ -124,7 +124,7 @@ $(function () {
         let distance = Math.abs(second_spot[0]-3)+Math.abs(second_spot[1]-(start_spot?5:1));
         if(distance!=buff_2){
             //死了
-            $(".popup").show().children(".die").show();
+            $(".popup").show().children(".die1").show();
         }else{
             //活了
             $("li[class*='3-"+(start_spot?5:1)+"']").removeClass("first").addClass("success");
@@ -135,15 +135,22 @@ $(function () {
     function run_animation(type,fn=function () {}){
         let run_time = 600;
         let cell_length =  $("ul.center").width()/5;
+
+        $(".animation").show();
         if(type==1){
+
             let left_pos = $(".soldier.left>p").position().top,
                 right_pos = $(".soldier.right>p").position().top;
+
             $(".soldier.left>p").animate({
                 top:soldier_left[0]=='top'?(left_pos+cell_length*soldier_left[1]):(left_pos-cell_length*soldier_left[1])
             },run_time+100,"linear");
+            $(".animation>.sword-qi.sq1").css("top",soldier_left[0]=='top'?(cell_length*(1+soldier_left[1])):(cell_length*(3-soldier_left[1])));
             $(".soldier.right>p").animate({
                 top:soldier_right[0]=='top'?(right_pos+cell_length*soldier_right[1]):(right_pos-cell_length*soldier_right[1])
-            },run_time+100,"linear",function () {fn();});
+            },run_time+100,"linear");
+            $(".animation>.sword-qi.sq2").css("top",soldier_right[0]=='top'?(cell_length*(1+soldier_right[1])):(cell_length*(3-soldier_right[1])));
+
             let left_timer = setInterval(function () {
                 $(".soldier.left").removeClass("num"+soldier_left[1]).addClass("num"+(soldier_left[1]-1));
                 soldier_left[1]--;
@@ -155,17 +162,33 @@ $(function () {
                 if(soldier_right[1]==0)clearInterval(right_timer);
             },run_time/soldier_right[1]);
 
+            setTimeout(function () {
+                $(".animation>.sword-qi.sq1,.animation>.sword-qi.sq2").animate({
+                    width:cell_length*5
+                },120,"linear",function () {
+                    setTimeout(function () {
+                        $(".animation").hide();
+                        $(".animation>.sword-qi.sq1,.animation>.sword-qi.sq2").attr("style","");
+                        fn();
+                    },200);
+                });
+            },run_time+200);
+
             return false;
         }
         if(type==2){
             let top_pos = $(".soldier.top>p").position().left,
                 bottom_pos = $(".soldier.bottom>p").position().left;
+
             $(".soldier.top>p").animate({
                 left:soldier_top[0]=='left'?(top_pos+cell_length*soldier_top[1]):(top_pos-cell_length*soldier_top[1])
             },run_time+100,"linear");
+            $(".animation>.sword-qi.sq3").css("left",soldier_top[0]=='left'?(cell_length*(1+soldier_top[1])):(cell_length*(3-soldier_top[1])));
             $(".soldier.bottom>p").animate({
                 left:soldier_bottom[0]=='left'?(bottom_pos+cell_length*soldier_bottom[1]):(bottom_pos-cell_length*soldier_bottom[1])
-            },run_time+100,"linear",function () {fn();});
+            },run_time+100,"linear");
+            $(".animation>.sword-qi.sq4").css("left",soldier_bottom[0]=='left'?(cell_length*(1+soldier_bottom[1])):(cell_length*(3-soldier_bottom[1])));
+
             let top_timer = setInterval(function () {
                 $(".soldier.top").removeClass("num"+soldier_top[1]).addClass("num"+(soldier_top[1]-1));
                 soldier_top[1]--;
@@ -176,6 +199,18 @@ $(function () {
                 soldier_bottom[1]--;
                 if(soldier_bottom[1]==0)clearInterval(bottom_timer);
             },run_time/soldier_bottom[1]);
+
+            setTimeout(function () {
+                $(".animation>.sword-qi.sq3,.animation>.sword-qi.sq4").animate({
+                    height:cell_length*5
+                },120,"linear",function () {
+                    setTimeout(function () {
+                        $(".animation").hide();
+                        $(".animation>.sword-qi.sq3,.animation>.sword-qi.sq4").attr("style","");
+                        fn();
+                    },200);
+                });
+            },run_time+200);
 
             return false;
         }
