@@ -25,7 +25,7 @@
     top: 0;
     overflow: hidden;
     text-align: center;
-    color: #fff;
+    color: rgba(255,255,255,0.8);
 }
 .chessboard>.popup>.start{
     width: 100%;
@@ -45,6 +45,7 @@
     text-align: left;
     line-height: 30px;
 }
+.chessboard>.popup>.help b{color:#ffffff;}
 .chessboard>.popup>.die,.chessboard>.popup>.success{
     font-size: 36px;
     padding-top: 100px;
@@ -69,47 +70,53 @@
 .top-status{
     width: 100%;
     height: 80px;
-    padding: 0 20px;
+    padding: 15px 50px 0;
 }
 
 .buff{
-    width: 140px;
-    height: 80px;
-    padding: 20px 0;
+    width: 150px;
+    height: 50px;
     float:left;
+    background: #dadfe2;
+    border-radius: 8px;
+    padding-left: 6px;
 }
 .buff>.countdown{
     width: 25px;
-    height: 41px;
+    height: 50px;
     text-align: center;
-    line-height: 41px;
-    color: #ffffff;
+    line-height: 50px;
     float: left;
     font-size: 20px;
+    font-weight: 800;
+    color: #3f484e;
+    box-sizing: content-box;
+}
+.buff>.countdown.countdown2{
+    border-left: 2px solid #3f484e;
+    padding-left: 6px;
 }
 .buff>i{
     display: block;
     width: 30px;
-    height: 41px;
+    height: 50px;
     background: url("../static/icon.png") no-repeat -150px 0;
     background-size: 150px 100px;
-    margin-left: 10px;
     float:left;
 }
-.buff>i:nth-child(3){margin-right: 10px;}
-.buff>i.num2{background-position: 0 0;}
-.buff>i.num3{background-position: -30px 0;}
-.buff>i.num4{background-position: -60px 0;}
+.buff>i:nth-child(2){margin-right: 14px;}
+.buff>i.num2{background-position: 0 5px;}
+.buff>i.num3{background-position: -30px 5px;}
+.buff>i.num4{background-position: -60px 5px;}
 
 .btn{
-    width: 210px;
-    height: 80px;
+    width: 140px;
+    height: 65px;
     float: right;
-    padding: 15px 0;
 }
 .btn>a{
     display: block;
-    width: 100px;
+    width: 80px;
     height: 50px;
     background: #dadfe2;
     border-radius: 8px;
@@ -123,12 +130,16 @@
     transition: background-color .2s ease;
 }
 .btn>a:hover{background: #ffffff;}
-.btn>a.help{float: left;}
+.btn>a.help{
+    width: 50px;
+    float: left;
+}
 
 .middle{
     overflow: hidden;
     width: 100%;
     height: 300px;
+    position: relative;
 }
 
 .center{
@@ -150,11 +161,16 @@
     background: #fff no-repeat center center;
     transition: transform 0.2s ease;
     cursor: pointer;
+    text-align: center;
+    font-size: 40px;
+    line-height: 60px;
+    color: red;
+    font-weight: 800;
 }
 .center>li:nth-child(even){background: #000;}
-.center>li.start{background: aqua;cursor: default;}
+.center>li.start{background: aqua;}
 .center>li:not(.start):hover{transform: scale(1.1);}
-.center>li.die::after{
+.center>li.die::after,.center>li.first::after,.center>li.second::after,.center>li.success::after{
     content: "";
     display: block;
     width: 60px;
@@ -162,30 +178,83 @@
     background: url("../static/die.png") no-repeat center center;
     background-size: 40px 40px;
 }
-.center>li.success{background: #00a700;}
+.center>li.first::after{
+    background-image: url("../static/first_spot.png");
+}
+.center>li.second::after{
+    background-image: url("../static/second_spot.png");
+}
+.center>li.success::after {
+    background-image: url("../static/success.png");
+}
+
+.animation{
+    display: none;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.animation>.sword-qi{
+    position: absolute;
+    background: rgba(235,102,24,0.9);
+}
+.animation>.sword-qi.sq1{
+    width: 0;
+    height: 60px;
+    top: 0;
+    left: 0;
+}
+.animation>.sword-qi.sq2{
+    width: 0;
+    height: 60px;
+    top: 0;
+    right: 0;
+}
+.animation>.sword-qi.sq3{
+    width: 60px;
+    height: 0;
+    top: 0;
+    left: 0;
+}
+.animation>.sword-qi.sq4{
+    width: 60px;
+    height: 0;
+    bottom: 0;
+    left: 0;
+}
 
 .soldier{opacity: 0;}
 .soldier1{
     width: 300px;
     height: 50px;
     margin: 0 auto;
+    position: relative;
 }
 .soldier2{
     width: 50px;
     height: 300px;
     float: left;
+    position: relative;
 }
-.soldier1.soldier-left{padding-left: 65px;}
-.soldier1.soldier-right{padding-left: 185px;}
-.soldier2.soldier-top{padding-top: 65px;}
-.soldier2.soldier-bottom{padding-top: 185px;}
 .soldier>p{
     display: block;
     width: 50px;
     height: 50px;
     background: url("../static/icon.png") no-repeat -100px 0;
     background-size: 150px 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
+.soldier1.soldier-left>p{left: 65px;}
+.soldier1.soldier-right>p{left: 185px;}
+.soldier2.soldier-top>p{top: 65px;}
+.soldier2.soldier-bottom>p{top: 185px;}
 .soldier>p::after{
     content: "";
     display: block;
@@ -194,7 +263,7 @@
     background: url("../static/icon.png") no-repeat  -150px -50px;;
     background-size: 150px 100px;
 }
-.soldier.num1,.soldier.num2,.soldier.num3{opacity: 1;}
+.soldier.num0,.soldier.num1,.soldier.num2,.soldier.num3{opacity: 1;}
 .soldier.num1>p::after{background-position: 0 -50px;}
 .soldier.num2>p::after{background-position: -50px -50px;}
 .soldier.num3>p::after{background-position: -100px -50px;}
@@ -215,7 +284,7 @@
 
     .chessboard{border-radius: .1rem;width: 7rem;height: 8.8rem;}
     .chessboard>.popup>.start{font-size: .8rem;padding-top: 3rem;}
-    .chessboard>.popup>.text{height: calc(100% - 2.2rem);}
+    .chessboard>.popup>.text{height: calc(100% - 1.8rem);}
     .chessboard>.popup>.help{
         padding: 1rem .5rem 0;
         font-size: .34rem;
@@ -233,44 +302,66 @@
         font-size: .4rem;
     }
 
-    .top-status{height: 1.4rem;padding: 0 .4rem;}
+    .top-status{height: 1.4rem;padding: .25rem .6rem 0;}
 
-    .buff{width: 2.6rem;height: 1.4rem;padding: .28rem 0;}
-    .buff>.countdown{width: .48rem;height: .8rem;line-height: .8rem;font-size: .34rem;}
+    .buff{
+        width: 2.8rem;
+        height: .9rem;
+        padding-left: .12rem;
+        border-radius: .1rem;
+    }
+    .buff>.countdown{width: .48rem;height: .9rem;line-height: .9rem;font-size: .34rem;}
+    .buff>.countdown.countdown2{
+        border-left: .04rem solid #3f484e;
+        padding-left: .12rem;
+    }
     .buff>i{
         display: block;
         width: .6rem;
-        height: .82rem;
+        height: .9rem;
         background-position: -3rem 0;
         background-size: 3rem 2rem;
-        margin-left: .1rem;
     }
-    .buff>i:nth-child(3){margin-right: .1rem;}
-    .buff>i.num3{background-position: -.6rem 0;}
-    .buff>i.num4{background-position: -1.2rem 0;}
+    .buff>i:nth-child(2){margin-right: .16rem;}
+    .buff>i.num2{background-position: 0 .04rem;}
+    .buff>i.num3{background-position: -.6rem .04rem;}
+    .buff>i.num4{background-position: -1.2rem .04rem;}
 
-    .btn{width: 3.4rem;height: 1.4rem;padding: .25rem 0;}
+    .btn{width: 2.6rem;height: 1.4rem;}
     .btn>a{
         width: 1.6rem;
         height: .9rem;
-        border-radius: .16rem;
+        border-radius: .1rem;
         line-height: .9rem;
         font-size: .36rem;
     }
+    .btn>a.help{width: .9rem;}
 
     .middle{height: 5rem;}
 
     .center{width: 5rem;height: 5rem;}
-    .center>li{width: 1rem;height: 1rem;}
+    .center>li{
+        width: 1rem;
+        height: 1rem;
+        font-size: .8rem;
+        line-height: 1rem;
+    }
     .center>li:not(.start):hover{transform: none;}
-    .center>li.die::after{width: 1rem;height: 1rem;background-size: .8rem .8rem;}
+    .center>li.die::after,.center>li.first::after,.center>li.second::after,.center>li.success::after{
+        width: 1rem;
+        height: 1rem;
+        background-size: .8rem .8rem;
+    }
+    .animation{width: 5rem;height: 5rem;}
+    .animation>.sword-qi.sq1,.animation>.sword-qi.sq2{height: 1rem;}
+    .animation>.sword-qi.sq3,.animation>.sword-qi.sq4{width: 1rem;}
 
     .soldier1{width: 5rem;height: 1rem;}
     .soldier2{width: 1rem;height: 5rem;}
-    .soldier1.soldier-left{padding-left: 1rem;}
-    .soldier1.soldier-right{padding-left: 3rem;}
-    .soldier2.soldier-top{padding-top: 1rem;}
-    .soldier2.soldier-bottom{padding-top: 3rem;}
+    .soldier1.soldier-left>p{left: 1rem;}
+    .soldier1.soldier-right>p{left: 3rem;}
+    .soldier2.soldier-top>p{top: 1rem;}
+    .soldier2.soldier-bottom>p{top: 3rem;}
     .soldier>p{width: 1rem;height: 1rem;background-position: -2rem 0;background-size: 3rem 2rem;}
     .soldier>p::after{width: 1rem;height: 1rem;background-position: -3rem -1rem;background-size: 3rem 2rem;}
     .soldier.num1>p::after{background-position: 0 -1rem;}
