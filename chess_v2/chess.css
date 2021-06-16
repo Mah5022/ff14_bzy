@@ -113,7 +113,6 @@
     width: 140px;
     height: 65px;
     float: right;
-    padding-bottom: 15px;
 }
 .btn>a{
     display: block;
@@ -198,6 +197,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
+    overflow: hidden;
 }
 .animation>.sword-qi{
     position: absolute;
@@ -284,7 +284,7 @@
 
     .chessboard{border-radius: .1rem;width: 7rem;height: 8.8rem;}
     .chessboard>.popup>.start{font-size: .8rem;padding-top: 3rem;}
-    .chessboard>.popup>.text{height: calc(100% - 2.2rem);}
+    .chessboard>.popup>.text{height: calc(100% - 1.8rem);}
     .chessboard>.popup>.help{
         padding: 1rem .5rem 0;
         font-size: .34rem;
@@ -302,29 +302,40 @@
         font-size: .4rem;
     }
 
-    .top-status{height: 1.4rem;padding: 0 .4rem;}
+    .top-status{height: 1.4rem;padding: .25rem .6rem 0;}
 
-    .buff{width: 2.6rem;height: 1.4rem;padding: .28rem 0;}
-    .buff>.countdown{width: .48rem;height: .8rem;line-height: .8rem;font-size: .34rem;}
+    .buff{
+        width: 2.8rem;
+        height: .9rem;
+        padding-left: .12rem;
+        border-radius: .1rem;
+    }
+    .buff>.countdown{width: .48rem;height: .9rem;line-height: .9rem;font-size: .34rem;}
+    .buff>.countdown.countdown2{
+        border-left: .04rem solid #3f484e;
+        padding-left: .12rem;
+    }
     .buff>i{
         display: block;
         width: .6rem;
-        height: .82rem;
+        height: .9rem;
         background-position: -3rem 0;
         background-size: 3rem 2rem;
     }
-    .buff>i:nth-child(2){margin-right: .2rem;}
-    .buff>i.num3{background-position: -.6rem 0;}
-    .buff>i.num4{background-position: -1.2rem 0;}
+    .buff>i:nth-child(2){margin-right: .16rem;}
+    .buff>i.num2{background-position: 0 .04rem;}
+    .buff>i.num3{background-position: -.6rem .04rem;}
+    .buff>i.num4{background-position: -1.2rem .04rem;}
 
-    .btn{width: 3.4rem;height: 1.4rem;padding: .25rem 0;}
+    .btn{width: 2.6rem;height: 1.4rem;}
     .btn>a{
         width: 1.6rem;
         height: .9rem;
-        border-radius: .16rem;
+        border-radius: .1rem;
         line-height: .9rem;
         font-size: .36rem;
     }
+    .btn>a.help{width: .9rem;}
 
     .middle{height: 5rem;}
 
@@ -341,6 +352,9 @@
         height: 1rem;
         background-size: .8rem .8rem;
     }
+    .animation{width: 5rem;height: 5rem;}
+    .animation>.sword-qi.sq1,.animation>.sword-qi.sq2{height: 1rem;}
+    .animation>.sword-qi.sq3,.animation>.sword-qi.sq4{width: 1rem;}
 
     .soldier1{width: 5rem;height: 1rem;}
     .soldier2{width: 1rem;height: 5rem;}
